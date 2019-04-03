@@ -8,6 +8,9 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(repr(loc),"Location('SLO', 35.3, -120.7)")
     
     # Add more tests!
+    def test_eq(self):
+        loc = Location("SLO", 35.3, -120.7)
+        self.assertEqual(loc, Location("SLO", 35.3, -120.7))
 
 if __name__ == "__main__":
         unittest.main()
