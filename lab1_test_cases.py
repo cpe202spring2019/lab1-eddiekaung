@@ -58,15 +58,15 @@ class TestLab1(unittest.TestCase):
 
 
 
-    def test_reverse_rec_empty_list(self):
-        """test case for when int_list is empty"""
-        self.assertEqual(reverse_rec([]), [])  # in case of empty lists
-
     def test_reverse_rec_none(self):
         """test case for when int_list is None""" 
         tlist = None
         with self.assertRaises(ValueError):    # used to check for exception
            reverse_rec(tlist)
+
+    def test_reverse_rec_empty_list(self):
+        """test case for when int_list is empty"""
+        self.assertEqual(reverse_rec([]), [])  # in case of empty lists
 
     def test_reverse_rec(self):
         """test case for reverse_rec"""
@@ -100,12 +100,6 @@ class TestLab1(unittest.TestCase):
 
 
 
-    def test_bin_search(self):
-        list_val =[0,1,2,3,4,7,8,9,10]
-        low = 0
-        high = len(list_val)-1
-        self.assertEqual(bin_search(4, 0, len(list_val)-1, list_val), 4)
-
     def test_bin_search_None(self):
         """test case for when int_list in None"""
         tlist = None
@@ -118,10 +112,51 @@ class TestLab1(unittest.TestCase):
         low = 0
         high = len(list_val)-1
         self.assertEqual(bin_search(11, 0, len(list_val)-1, list_val), None)
+
+    def test_bin_search_lower_half(self):
+        """test case for when target is in lower half of the list"""
+        list_val =[0,1,2,3,4,7,8,9,10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(4, 0, len(list_val)-1, list_val), 4)
+
+    def test_bin_search_upper_half(self):
+        """test case for when target is in upper half of the list"""
+        list_val =[0,1,2,3,4,7,8,9,10]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(7, 0, len(list_val)-1, list_val), 5)
+
+    def test_bin_search_random_lower_half(self):
+        """test case for when target is in the lower half of the list"""
+        list_val =[2,15,23,26,56,57,66,66,89,99,100]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(26, 0, len(list_val)-1, list_val), 3)
+
+    def test_bin_search_random_upper_half(self):
+        """test case for when target is in the lower half of the list"""
+        list_val =[2,15,23,26,56,57,60,66,89,99,100]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(66, 0, len(list_val)-1, list_val), 7)
+
+    def test_bin_search_middle(self):
+        """test case for when target is at the midpoint"""
+        list_val =[2,15,23,26,56,57,60,66,89,99,100]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(57, 0, len(list_val)-1, list_val), 5)
+
+    def test_bin_search_even_list(self):
+        """test case for when the list has even number of length"""
+        list_val =[2,15,23,26,56,57,60,66,89,99]
+        low = 0
+        high = len(list_val)-1
+        self.assertEqual(bin_search(57, 0, len(list_val)-1, list_val), 5)
         
-        
+
 
 if __name__ == "__main__":
         unittest.main()
 
-    
