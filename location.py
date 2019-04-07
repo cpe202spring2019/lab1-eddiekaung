@@ -1,4 +1,5 @@
 # CPE 202 Lab 0
+import math    # for isclose function
 
 # represents a location using name, latitude and longitude
 class Location:
@@ -6,14 +7,18 @@ class Location:
         self.name = name    # string for name of location
         self.lat = lat      # latitude in degrees (-90 to 90)
         self.lon = lon      # longitude in degrees (-180 to 180)
-
+ 
 # ADD BOILERPLATE HERE (__eq__ and __repr__ functions)
     def __eq__(self, other):
-        return self.lat == other.lat and self.lon == other.lon
-
+        """compare if two Locations share the same lat and lon"""
+        return (type(other) == Location and
+                math.isclose(self.lat, other.lat) and
+                math.isclose(self.lon, other.lon))
 
     def __repr__(self):
+        """represent Location in the format Location('<name>', <lat>, <lon>)"""
         return "Location('{0}', {1}, {2})".format(self.name, self.lat, self.lon)
+
 
 def main():
     loc1 = Location("SLO", 35.3, -120.7)
