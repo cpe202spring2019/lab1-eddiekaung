@@ -106,6 +106,11 @@ class TestLab1(unittest.TestCase):
         with self.assertRaises(ValueError):  # used to check for exception
             bin_search(None, None, None, tlist)
 
+    def test_bin_search_empty_list(self):
+        """test case for when int_list in empty"""
+        tlist = []
+        self.assertEqual(bin_search(11, 0, len(tlist)-1, tlist), None)
+
     def test_bin_search_not_found(self):
         """test case for when target is not found"""
         list_val =[0,1,2,3,4,7,8,9,10]
