@@ -190,6 +190,16 @@ class TestLab1(unittest.TestCase):
         """test cases for when the high and low contain target"""
         list_val =[2,15,23,26,56,57,60,66,89,99, 123]
         self.assertEqual(bin_search(57, 0, 20, list_val), 5)
+
+    def test_bin_search_list_len_one(self):
+        """test cases for when the list length is one and contains target"""
+        list_val =[2]
+        self.assertEqual(bin_search(2, 0, 0, list_val), 0)
+
+    def test_bin_search_list_len_one_not_found(self):
+        """test cases for when list length is one and doesn't contain target"""
+        list_val =[2]
+        self.assertEqual(bin_search(4, 0, 0, list_val), None)
         
 
 
