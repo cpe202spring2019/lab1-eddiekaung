@@ -100,6 +100,33 @@ class TestLab1(unittest.TestCase):
 
 
 
+    def test_bin_search_none(self):
+        """test case for when int_list is None""" 
+        tlist = None
+        with self.assertRaises(ValueError):    # used to check for exception
+           bin_search(tlist, 0, 0, None)
+
+    def test_bin_search_low_greater_than_high(self):
+        """test case for when low is greater than high"""
+        tlist = [0,1,2,3,4,5,6,7,8,9,10]
+        low = 5
+        high = 0
+        self.assertEqual(bin_search(2, low, high, tlist), None)
+
+    def test_bin_search_low_equals_high(self):
+        """test case for when low is greater than high"""
+        tlist = [0,1,2,3,4,5,6,7,8,9,10]
+        low = 5
+        high = 5
+        self.assertEqual(bin_search(2, low, high, tlist), None)
+
+    def test_bin_search_low_equals_high_equals_target_index(self):
+        """test case for when low is greater than high"""
+        tlist = [0,1,2,3,4,5,6,7,8,9,10]
+        low = 5
+        high = 5
+        self.assertEqual(bin_search(5, low, high, tlist), 5)
+
     def test_bin_search_empty_list(self):
         """test case for when int_list in empty"""
         tlist = []
@@ -153,6 +180,16 @@ class TestLab1(unittest.TestCase):
         low = 0
         high = len(list_val)-1
         self.assertEqual(bin_search(57, 0, len(list_val)-1, list_val), 5)
+
+    def test_bin_search_random_high_low_without_target(self):
+        """test cases for when the high and low doesn't contain target"""
+        list_val =[2,15,23,26,56,57,60,66,89,99]
+        self.assertEqual(bin_search(57, 0, 3, list_val), None)
+        
+    def test_bin_search_random_high_low_with_target(self):  # buggy
+        """test cases for when the high and low contain target"""
+        list_val =[2,15,23,26,56,57,60,66,89,99, 123]
+        self.assertEqual(bin_search(57, 0, 20, list_val), 5)
         
 
 
