@@ -12,6 +12,7 @@ class Location:
     def __eq__(self, other):
         """compare if two Locations share the same lat and lon"""
         return (type(other) == Location and
+                self.name == other.name and
                 math.isclose(self.lat, other.lat) and
                 math.isclose(self.lon, other.lon))
 
